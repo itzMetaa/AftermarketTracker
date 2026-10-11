@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' wimg: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Aftermarket Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-icon" src="icon.png" alt="">
+      <div>
+        <div class="brand-title">Aftermarket Tracker</div>
+        <div class="brand-sub">Forza Horizon 6</div>
+      </div>
+    </div>
+
+    <div class="overall">
+      <div class="overall-label">
+        <span id="overallText">–</span>
+        <span id="overallSub" class="muted"></span>
+      </div>
+      <div class="bar big"><div id="overallBar" class="fill"></div></div>
+    </div>
+
+    <div class="tools">
+      <input id="search" type="search" placeholder="Search locations or cars…" spellcheck="false">
+      <select id="filter" title="Filter locations">
+        <option value="all">All locations</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="complete">Completed</option>
+        <option value="new">New cars</option>
+      </select>
+      <button id="refreshBtn" class="icon-btn" title="Check the wiki for updates">
+        <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5"/></svg>
+      </button>
+      <button id="settingsBtn" class="icon-btn" title="Settings">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="status" class="status"><span id="statusText">Loading…</span></div>
+
+  <main id="grid"></main>
+
+  <div id="settings" class="popover hidden">
+    <h3>Settings</h3>
+    <label class="switch-row">
+      <input type="checkbox" id="optLinked">
+      <span>
+        <b>Link identical cars across locations</b>
+        <small>Ticking a car also ticks the same car (same build and PI) at every other location that sells it.</small>
+      </span>
+    </label>
+    <label class="switch-row">
+      <input type="checkbox" id="optEvents">
+      <span>
+        <b>Count past event cars</b>
+        <small>Include cars from finished Evolving World events (e.g. dealership takeovers) in progress.</small>
+      </span>
+    </label>
+    <div class="popover-actions">
+      <button id="forceRefreshBtn" class="btn">Re-download everything</button>
+      <button id="dataDirBtn" class="btn ghost">Open data folder</button>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div id="modalPanel" class="modal-panel"></div>
+  </div>
+
+  <div id="lightbox" class="lightbox hidden"><img id="lightboxImg" alt=""></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

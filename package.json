@@ -1,0 +1,46 @@
+{
+  "name": "aftermarket-tracker",
+  "productName": "Aftermarket Tracker",
+  "version": "1.0.0",
+  "description": "Collection tracker for Forza Horizon 6 Aftermarket Car locations, synced from the Forza wiki.",
+  "author": "itzMetaa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itzMetaa/AftermarketTracker.git"
+  },
+  "homepage": "https://github.com/itzMetaa/AftermarketTracker",
+  "main": "src/main/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "check-wiki": "node scripts/check-wiki.js",
+    "dist": "electron-builder --win portable",
+    "dist:dir": "electron-builder --win dir"
+  },
+  "build": {
+    "appId": "local.aftermarket-tracker",
+    "productName": "Aftermarket Tracker",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "build/icon.png"
+    },
+    "portable": {
+      "artifactName": "AftermarketTracker-${version}-portable.exe"
+    }
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  }
+}
